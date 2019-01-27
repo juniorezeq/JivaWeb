@@ -19,6 +19,7 @@ import br.com.controle.modelo.dao.LancamentoDao;
 import br.com.controle.modelo.negocio.Lancamento;
 import br.com.controle.modelo.negocio.TipoLancamento;
 import br.com.controle.modelo.tx.Transacional;
+import br.com.controle.modelo.validador.ValidadorLancamento;
 
 @Named
 @ViewScoped
@@ -30,6 +31,7 @@ public class LancamentoBean implements Serializable {
 	private LancamentoDao lancamentoDao;
 	private Lancamento lancamento;
 	private Lancamento selecionado;
+	private ValidadorLancamento validador;
 
 	@PostConstruct
 	public void init() {
@@ -49,6 +51,7 @@ public class LancamentoBean implements Serializable {
 
 	@Transacional
 	public void gravar() {
+
 		try {
 			if (lancamento.getTipolacamento().equals(TipoLancamento.Pagar)) {
 				lancamento.setValor(lancamento.getValor() * -1);
@@ -58,21 +61,6 @@ public class LancamentoBean implements Serializable {
 			lancamento = new Lancamento();
 		} catch (Exception e) {
 			mensagemErro("não foi possivel  gravar");
-
-		}
-	}
-
-	@Transacional
-	public void gravarReceber() {
-		try {
-			lancamento.setTipolacamento(TipoLancamento.Receber);
-			lancamento.setValor(lancamento.getValor());
-			lancamentoDao.adiciona(lancamento);
-			mensagemSucesso("Adicionado com sucesso");
-			lancamento = new Lancamento();
-		} catch (Exception e) {
-			mensagemErro("não foi possivel  gravar");
-
 		}
 	}
 
