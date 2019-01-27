@@ -10,7 +10,7 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import br.com.controle.modelo.negocio.Lancamento;
-import br.com.controle.modelo.tx.Transacional;
+import br.com.controle.util.Transacional;
 
 @Named
 @ViewScoped

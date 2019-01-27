@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+	<title>Controle Contas</title>
+	<meta name="author" content="Ezequiel Junior"></meta>
+</h:head>
+<h:body style="padding: 60px;">
+	<b:navBar brand="Jiva Contas - Web" brandHref="#" fixed="top"
+		inverse="true">
+		<b:navbarLinks>
+			<b:navLink value="Home" href="#{menuBean.home()}"></b:navLink>
+			<b:navLink value="Laçamento" href="#{menuBean.lancamento()}"></b:navLink>
+			<b:navLink value="Sankhya" href="#{menuBean.sankhya()}"></b:navLink>
+		</b:navbarLinks>
+	</b:navBar>
+	<b:container>
+
+
+		<h:form>
+
+			<b:dataTable id="tabela"
+				customLangUrl="//cdn.datatables.net/plug-ins/1.10.19/i18n/Portuguese-Brasil.json"
+				select="true" selectionMode="single" var="lancamento"
+				value="#{lancamentoBean.listarTodos()}">
+				<b:dataTableColumn value="#{lancamento.descricao}" />
+				<b:dataTableColumn value="#{lancamento.valor}" />
+				<b:dataTableColumn dataType="date" value="#{lancamento.vencimento}"
+					order="asc" />
+				<b:dataTableColumn label="Ação">
+					<b:commandButton style="background:#ff0000;color:#ffffff"
+						value="Delete" iconAwesome="trash"
+						action="#{lancamentoBean.apagar(lancamento)}">
+						<f:ajax execute="@this" render="@form" />
+					</b:commandButton>
+				</b:dataTableColumn>
+			</b:dataTable>
+			<b:commandButton style="background:#01A9DB;color:#ffffff"
+				value="Novo" iconAwesome="plus" action="#{lancamentoBean.novo()}">
+				<f:ajax execute="@this" render="@form" />
+			</b:commandButton>
+			<p:chart type="pie" model="#{financeiroBean.pieModel}"
+				style="width:400px;height:300px" />
+
+			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+				<p:commandButton value="Yes" type="button"
+					styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+				<p:commandButton value="No" type="button"
+					styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+			</p:confirmDialog>
+		</h:form>
+		<p:messages id="msg" autoUpdate="true" showDetail="true"
+			closable="true" style="60%">
+			<p:effect type="pulsate" event="load" delay="500" />
+		</p:messages>
+
+	</b:container>
+
+</h:body>
+</html>

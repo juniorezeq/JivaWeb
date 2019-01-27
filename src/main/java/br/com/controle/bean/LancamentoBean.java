@@ -18,8 +18,8 @@ import javax.inject.Named;
 import br.com.controle.modelo.dao.LancamentoDao;
 import br.com.controle.modelo.negocio.Lancamento;
 import br.com.controle.modelo.negocio.TipoLancamento;
-import br.com.controle.modelo.tx.Transacional;
 import br.com.controle.modelo.validador.ValidadorLancamento;
+import br.com.controle.util.Transacional;
 
 @Named
 @ViewScoped
@@ -29,6 +29,7 @@ public class LancamentoBean implements Serializable {
 
 	@Inject
 	private LancamentoDao lancamentoDao;
+    @Inject
 	private Lancamento lancamento;
 	private Lancamento selecionado;
 	private ValidadorLancamento validador;
