@@ -14,7 +14,7 @@ import org.primefaces.model.chart.PieChartModel;
 import br.com.controle.modelo.dao.LancamentoDao;
 import br.com.controle.modelo.negocio.Lancamento;
 import br.com.controle.modelo.negocio.TipoLancamento;
-import br.com.controle.modelo.tx.Transacional;
+import br.com.controle.util.Transacional;
 
 import java.util.ArrayList;
 import java.util.List;

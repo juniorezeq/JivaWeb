@@ -18,7 +18,7 @@ import javax.inject.Named;
 import br.com.controle.modelo.dao.LancamentoDao;
 import br.com.controle.modelo.negocio.Lancamento;
 import br.com.controle.modelo.negocio.TipoLancamento;
-import br.com.controle.modelo.tx.Transacional;
+import br.com.controle.util.Transacional;
 import br.com.controle.modelo.validador.ValidadorLancamento;
 
 @Named
