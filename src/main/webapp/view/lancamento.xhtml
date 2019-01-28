@@ -14,85 +14,85 @@
 	<b:navBar brand="Jiva Contas - Web" brandHref="#" fixed="top"
 		inverse="true">
 		<b:navbarLinks>
-			<b:navLink value="Home" href="#{menuBean.home()}"></b:navLink>
-			<b:navLink value="Laçamento"
-				href="#{menuBean.lancamento()}"></b:navLink>
-			<b:navLink value="Sankhya" href="#{menuBean.sankhya()}"></b:navLink>
 		</b:navbarLinks>
 	</b:navBar>
 	<b:container>
 
 
-			<h:form id="form">
-				<center>
-					<p:fieldset legend="Lançamento" toggleable="false"
-						rendered="true">
-						<h:panelGrid columns="2" cellpadding="10">
-
-							<p:outputLabel value="Descrição:" for="descricao" />
-							<p:inputText id="descricao"
-								value="#{lancamentoBean.conta.descricao}" required="true"
-								title="Descrição da conta" size="20" />
-
-							<p:outputLabel value="Valor:" for="valor" />
-							<p:inputNumber symbol="R$" symbolPosition="p" decimalSeparator="," thousandSeparator="." id="valor" value="#{lancamentoBean.conta.valor}"
-								required="true" title="valor da conta" size="20" />
-
-							<p:outputLabel value="Vencimento: " for="inicio" />
-							<p:calendar required="true" id="inicio"
-								value="#{lancamentoBean.conta.vencimento}" pattern="dd/MM/yyyy"
-								converter="LocalDateConverter">
-							</p:calendar>
-
-							<p:outputLabel value="Tipo:" for="cadastroTipo" />
-							<p:selectOneMenu required="true" id="cadastroTipo"
-								value="#{lancamentoBean.conta.tipolacamento}"
-								style="width:150px">
-								<f:selectItem itemLabel="Tipo Lançamento" itemValue=""
-									noSelectionOption="true" />
-								<f:selectItem itemLabel="Conta a Pagar" itemValue="Pagar" />
-								<f:selectItem itemLabel="Conta a Receber" itemValue="Receber" />
-							</p:selectOneMenu>
-
-							<p:commandButton id="btnIncluir" value="Gravar"
-								actionListener="#{lancamentoBean.gravar()}" process="@all"
-								update="@all" icon="fa fa-fw fa-save">
-								<f:ajax execute="@this" render="@form" />
-								<p:confirm header="Confirmação de inclusão"
-									message="deseja salvar o item?" icon="ui-icon-alert" />
-							</p:commandButton>
-
-							<p:commandButton id="btnLimpar" style="background:#FFA500"
-								value="Limpar Campos"
-								actionListener="#{lancamentoBean.limpar()}" update="form"
-								icon="fa fa-fw fa-eraser">
-								<p:confirm header="Confirmação"
-									message="apagar dados digitados e iniciar novamente?"
-									icon="ui-icon-alert" />
-							</p:commandButton>
-
-
-						</h:panelGrid>
-
-						<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-							<p:commandButton value="Yes" type="button"
-								styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-							<p:commandButton value="No" type="button"
-								styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-						</p:confirmDialog>
-						<p:messages id="msg" autoUpdate="true" showDetail="true"
-							closable="true" style="60%">
-							<p:effect type="pulsate" event="load" delay="500" />
-						</p:messages>
-
-					</p:fieldset>
-					
-				</center>
-				<b:commandButton style="background:#01A9DB;color:#ffffff"
-				value="Início" iconAwesome="home" action="#{lancamentoBean.home()}">
+		<h:form id="form">
+			<b:commandButton style="background:#01A9DB;color:#ffffff"
+				value="Lancamentos" iconAwesome="home"
+				action="#{lancamentoBean.lancamentos()}">
 				<f:ajax execute="@this" render="@form" />
 			</b:commandButton>
-			</h:form>
+			<center>
+
+
+
+				<p:fieldset legend="Lançamento" toggleable="false" rendered="true">
+					<h:panelGrid columns="2" cellpadding="10">
+
+						<p:outputLabel value="Descrição:" for="descricao" />
+						<p:inputText id="descricao"
+							value="#{lancamentoBean.conta.descricao}" required="true"
+							title="Descrição da conta" size="20" />
+
+						<p:outputLabel value="Valor:" for="valor" />
+						<p:inputNumber symbol="R$" symbolPosition="p" decimalSeparator=","
+							thousandSeparator="." id="valor"
+							value="#{lancamentoBean.conta.valor}" required="true"
+							title="valor da conta" size="20" />
+
+						<p:outputLabel value="Vencimento: " for="inicio" />
+						<p:calendar required="true" id="inicio"
+							value="#{lancamentoBean.conta.vencimento}" pattern="dd/MM/yyyy"
+							converter="LocalDateConverter">
+						</p:calendar>
+
+						<p:outputLabel value="Tipo:" for="cadastroTipo" />
+						<p:selectOneMenu required="true" id="cadastroTipo"
+							value="#{lancamentoBean.conta.tipolacamento}" style="width:150px">
+							<f:selectItem itemLabel="Tipo Lançamento" itemValue=""
+								noSelectionOption="true" />
+							<f:selectItem itemLabel="Conta a Pagar" itemValue="Pagar" />
+							<f:selectItem itemLabel="Conta a Receber" itemValue="Receber" />
+						</p:selectOneMenu>
+
+						<p:commandButton id="btnIncluir" value="Gravar"
+							actionListener="#{lancamentoBean.gravar()}" process="@all"
+							update="@all" icon="fa fa-fw fa-save">
+							<f:ajax execute="@this" render="@form" />
+							<p:confirm header="Confirmação de inclusão"
+								message="deseja salvar o item?" icon="ui-icon-alert" />
+						</p:commandButton>
+
+						<p:commandButton id="btnLimpar" style="background:#FFA500"
+							value="Limpar Campos" actionListener="#{lancamentoBean.limpar()}"
+							update="form" icon="fa fa-fw fa-eraser">
+							<p:confirm header="Confirmação"
+								message="apagar dados digitados e iniciar novamente?"
+								icon="ui-icon-alert" />
+						</p:commandButton>
+
+
+					</h:panelGrid>
+
+					<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+						<p:commandButton value="Yes" type="button"
+							styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+						<p:commandButton value="No" type="button"
+							styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+					</p:confirmDialog>
+					<p:messages id="msg" autoUpdate="true" showDetail="true"
+						closable="true" style="60%">
+						<p:effect type="pulsate" event="load" delay="500" />
+					</p:messages>
+
+				</p:fieldset>
+
+			</center>
+
+		</h:form>
 	</b:container>
 
 </h:body>

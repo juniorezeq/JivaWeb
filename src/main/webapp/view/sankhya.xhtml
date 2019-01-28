@@ -17,28 +17,17 @@
 	</b:navBar>
 	<b:container>
 		<b:jumbotron>
-		<h:form>
-		
 			<b:carousel id="parque">
 				<b:carouselItem>
 	
-					<img src="view/imagens/bestplace.jpg" alt="Sankhya" />
+					<img src="imagens/bestplace.jpg" alt="Sankhya" />
 				</b:carouselItem>
 				<b:carouselItem>
-					<img src="view/imagens/office.jpg" alt="Office" />
+					<img src="imagens/office.jpg" alt="Office" />
 				</b:carouselItem>
 			</b:carousel>
 			<p>
 			</p>
-				<b:commandButton style="background:#01A9DB;color:#ffffff"
-				value="Lancamentos" iconAwesome="home" action="#{lancamentoBean.lancamentos()}">
-				<f:ajax execute="@this" render="@form" />
-			</b:commandButton>
-			<b:commandButton style="background:#01A9DB;color:#ffffff"
-				value="Novo Lancamento" iconAwesome="plus" action="#{lancamentoBean.lancamento()}">
-				<f:ajax execute="@this" render="@form" />
-			</b:commandButton>
-			</h:form>
 		</b:jumbotron>
 	</b:container>
 

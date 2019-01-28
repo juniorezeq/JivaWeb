@@ -14,8 +14,7 @@ import org.primefaces.model.chart.PieChartModel;
 import br.com.controle.modelo.dao.LancamentoDao;
 import br.com.controle.modelo.negocio.Lancamento;
 import br.com.controle.modelo.negocio.TipoLancamento;
-import br.com.controle.service.LancamentoService;
-import br.com.controle.util.Transacional;
+import br.com.controle.modelo.tx.Transacional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,11 +27,9 @@ public class FinanceiroBean implements Serializable {
 	private PieChartModel pieModel2;
 
 	@Inject
-	private LancamentoService lancamentoService;
+	private LancamentoDao lancamentoDao = new LancamentoDao();
 	@Inject
-	private Lancamento lancamento;
-	@Inject
-	private LancamentoDao lancamentoDao;
+	private Lancamento lancamento = new Lancamento();
 	private List<Lancamento> lancamentoTotal;
 	private double pagaveis;
 	private double recebiveis;

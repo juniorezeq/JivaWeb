@@ -18,8 +18,8 @@ import javax.inject.Named;
 import br.com.controle.modelo.dao.LancamentoDao;
 import br.com.controle.modelo.negocio.Lancamento;
 import br.com.controle.modelo.negocio.TipoLancamento;
+import br.com.controle.modelo.tx.Transacional;
 import br.com.controle.modelo.validador.ValidadorLancamento;
-import br.com.controle.util.Transacional;
 
 @Named
 @ViewScoped
@@ -29,7 +29,6 @@ public class LancamentoBean implements Serializable {
 
 	@Inject
 	private LancamentoDao lancamentoDao;
-    @Inject
 	private Lancamento lancamento;
 	private Lancamento selecionado;
 	private ValidadorLancamento validador;
@@ -41,15 +40,20 @@ public class LancamentoBean implements Serializable {
 	}
 
 	@Transacional
-	public String novo() {
-		return "/view/lancamento.xhtml?faces-redirect=true";
-	}
-
-	@Transacional
 	public String home() {
 		return "/view/index.xhtml?faces-redirect=true";
 	}
 
+	@Transacional
+	public String lancamento() {
+		return "/view/lancamento.xhtml?faces-redirect=true";
+	}
+
+	@Transacional
+	public String lancamentos() {
+		return "/view/lancamentos.xhtml?faces-redirect=true";
+	}
+	
 	@Transacional
 	public void gravar() {
 
@@ -78,7 +82,7 @@ public class LancamentoBean implements Serializable {
 	}
 
 	@Transacional
-	public List<Lancamento> listarTodos() {
+	public List<Lancamento> listarTodos() {	
 		List<Lancamento> todos = new ArrayList<Lancamento>();
 		todos = lancamentoDao.listaTodos();
 		return todos;

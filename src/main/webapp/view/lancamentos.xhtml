@@ -13,15 +13,16 @@
 	<b:navBar brand="Jiva Contas - Web" brandHref="#" fixed="top"
 		inverse="true">
 		<b:navbarLinks>
-			<b:navLink value="Home" href="#{menuBean.home()}"></b:navLink>
-			<b:navLink value="Laçamento" href="#{menuBean.lancamento()}"></b:navLink>
-			<b:navLink value="Sankhya" href="#{menuBean.sankhya()}"></b:navLink>
 		</b:navbarLinks>
 	</b:navBar>
 	<b:container>
 
 
 		<h:form>
+		<b:commandButton style="background:#01A9DB;color:#ffffff"
+				value="Novo" iconAwesome="plus" action="#{lancamentoBean.lancamento()}">
+				<f:ajax execute="@this" render="@form" />
+			</b:commandButton>
 
 			<b:dataTable id="tabela"
 				customLangUrl="//cdn.datatables.net/plug-ins/1.10.19/i18n/Portuguese-Brasil.json"
@@ -39,10 +40,7 @@
 					</b:commandButton>
 				</b:dataTableColumn>
 			</b:dataTable>
-			<b:commandButton style="background:#01A9DB;color:#ffffff"
-				value="Novo" iconAwesome="plus" action="#{lancamentoBean.novo()}">
-				<f:ajax execute="@this" render="@form" />
-			</b:commandButton>
+			
 			<p:chart type="pie" model="#{financeiroBean.pieModel}"
 				style="width:400px;height:300px" />
 

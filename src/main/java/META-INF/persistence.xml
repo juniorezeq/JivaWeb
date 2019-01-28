@@ -7,8 +7,6 @@
 
 	<persistence-unit name="postgres-local">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-		<class>br.com.controle.modelo.negocio.ContaPagar</class>
-		<class>br.com.controle.modelo.negocio.ContaReceber</class>
 		
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
